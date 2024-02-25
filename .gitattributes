@@ -1,1 +1,1 @@
-target/docker/* linguist-vendored
+target/docker/** linguist-vendored
