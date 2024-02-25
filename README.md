@@ -17,7 +17,7 @@ and [Circe](https://index.scala-lang.org/circe/circe).
 
 ### _Some nuances_
 
-- At the current stage the service pulls data from just the first pages in
+- At the current stage the service pulls data from just the first page in
 categories "Electronics Store", "Jewelry Store", and "Clothing Store".
 - Collected data is kept in memory, therefore once the service restarts
 the dashboard will be reset.
