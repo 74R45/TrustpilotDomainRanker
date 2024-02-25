@@ -11,9 +11,9 @@ and [Circe](https://index.scala-lang.org/circe/circe).
 
 ### _Usage_
 
-1. Install Docker Compose
-2. Run `docker compose up -d` in the directory
-3. Get relevant domains in `out/dashboard.txt`
+1. Install [Docker Compose](https://docs.docker.com/compose/install/).
+2. Run `docker compose up -d` in this directory.
+3. Get relevant domains in `out/dashboard.txt`.
 
 ### _Some nuances_
 
