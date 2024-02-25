@@ -1,0 +1,8 @@
+services:
+  app:
+    container_name: app
+    build:
+      context: ./target/docker/stage
+      dockerfile: Dockerfile
+    volumes:
+      - ./out:/out
