@@ -68,6 +68,7 @@ object DomainRankerApp extends App {
   private def updateDomains(): Unit = {
     logger.info("Collecting domain data...")
     domainSource
+      .recoverWithRetries(3, _ => domainSource)
       .runWith(domainSink)
       .onComplete {
         case Success(count) =>

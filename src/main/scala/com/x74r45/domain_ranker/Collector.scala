@@ -13,6 +13,7 @@ import org.jsoup.Connection
 import org.slf4j.LoggerFactory
 
 import java.time.Instant
+import scala.annotation.tailrec
 import scala.collection.mutable
 import scala.collection.parallel.CollectionConverters.*
 import scala.concurrent.duration.*
@@ -45,13 +46,16 @@ object Collector {
   // Browser settings
   private val trustpilotBrowser = new JsoupBrowser {
     override def requestSettings(conn: Connection): Connection =
-      conn.ignoreContentType(true)
+      conn
+        .ignoreContentType(true)
+        .timeout((1 minute).toMillis.toInt)
   }
   private val vstatBrowser = new JsoupBrowser {
     override def requestSettings(conn: Connection): Connection =
       conn
         .header("authority", "web.vstat.info")
         .cookie("vstat_session", "O68lcne2YMZAhRU6PP4pV9OwRjtOWMrvhj3KECgt;")
+        .timeout((1 minute).toMillis.toInt)
   }
   
   /**
@@ -73,7 +77,7 @@ object Collector {
 
     // Get the page of the category, process each domain and filter the relevant ones
     // As this doesn't cause side effects, we can do this in parallel
-    val trustpilotDoc = trustpilotBrowser.get(TrustpilotUrl(categoryName))
+    val trustpilotDoc = retrieveUrl(TrustpilotUrl(categoryName), trustpilotBrowser)
     (trustpilotDoc >> elements(DomainElementCSSQuery))
       .par.map(parseDomain(after))
       .collect { case Some(d) => d }.seq
@@ -102,14 +106,14 @@ object Collector {
         return None
     }
     val totalReviewCount = DomainTotalReviewsRegex.findFirstMatchIn(html) match {
-      case Some(m) => m.group(1).filter(_.isDigit).toInt
+      case Some(m) => ('0' +: m.group(1).filter(_.isDigit)).toInt
       case None =>
         logger.warn(f"Warning: parsing totalReviewCount for \"$name\" failed! Assigning it to 0.")
         0
     }
 
     // Get reviews JSON of this domain and parse it
-    val reviewsDoc = trustpilotBrowser.get(TrustpilotReviewsUrl(id))
+    val reviewsDoc = retrieveUrl(TrustpilotReviewsUrl(id), trustpilotBrowser)
     val reviewsJson = reviewsDoc >> text("body")
     val reviews = parseReviewsJson(reviewsJson)
     if (reviews.isEmpty) {
@@ -122,10 +126,11 @@ object Collector {
     if (recentReviews.isEmpty) return None
 
     // Get monthly traffic from Vstat
-    val vstatDoc = vstatBrowser.get(VstatUrl(name))
-    val monthlyVisits =
+    val vstatDoc = retrieveUrl(VstatUrl(name), vstatBrowser)
+    val monthlyVisitsParsed =
       (vstatDoc >> element("#MONTHLY_VISITS"))
-        .attr("data-smvisits").toInt
+        .attr("data-smvisits")
+    val monthlyVisits = ('0' +: monthlyVisitsParsed.filter(_.isDigit)).toInt
 
     Some(Domain(name, recentReviews.size, totalReviewCount, monthlyVisits, recentReviews.head))
   }
@@ -144,5 +149,25 @@ object Collector {
       }
       case None => Vector.empty
     }
+  }
+
+  /**
+   * Retrieves a url using a browser, makes multiple attempts if an HTTP error occurs.
+   * @param url      the url to retrieve
+   * @param browser  the browser to use
+   * @param attempts how many attempts to make before failing, defaults to 3
+   * @return retrieved element
+   */
+  @tailrec
+  private def retrieveUrl(url: String, browser: JsoupBrowser, attempts: Int = 3): JsoupBrowser.JsoupDocument = {
+    try
+      browser.get(url)
+    catch
+      case exception =>
+        logger.error(exception.getMessage)
+        if (attempts > 1)
+          retrieveUrl(url, browser, attempts - 1)
+        else
+          throw exception
   }
 }

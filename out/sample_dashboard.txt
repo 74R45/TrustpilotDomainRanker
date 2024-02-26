@@ -1,0 +1,103 @@
+--------- Domain Dashboard ---------
+Last updated: 2024-02-26 23:08:36.801
+
+1. www.bhphotovideo.com
+-- Latest Review Count: 5
+-- Total Review Count: 309166
+-- Monthly Visits: 17947672
+-- Latest Review:
+---- Author: Tim
+---- Text: Quick & Easy Shopping
+---- Rating: 5 / 5
+---- Date: 2024-02-26 23:05:50
+
+2. www.teepublic.com
+-- Latest Review Count: 5
+-- Total Review Count: 378075
+-- Monthly Visits: 11733003
+-- Latest Review:
+---- Author: customer
+---- Text: Quality of shirts only surpassed by the quality of customer service!
+---- Rating: 5 / 5
+---- Date: 2024-02-26 23:07:44
+
+3. swappa.com
+-- Latest Review Count: 5
+-- Total Review Count: 28150
+-- Monthly Visits: 2832303
+-- Latest Review:
+---- Author: Patrick Boring
+---- Text: Love Swappa! I've bought several phones through them.
+---- Rating: 5 / 5
+---- Date: 2024-02-26 23:06:54
+
+4. stockx.com
+-- Latest Review Count: 4
+-- Total Review Count: 130539
+-- Monthly Visits: 35992017
+-- Latest Review:
+---- Author: Chilon Bolton
+---- Text: The boots I received seem used. Or good condition. I paid for a brand new pair. I want my money to be returned back to my account/ credit card. Please advise. Chilon Bolton 
+---- Rating: 1 / 5
+---- Date: 2024-02-26 22:54:43
+
+5. cupshe.com
+-- Latest Review Count: 3
+-- Total Review Count: 14467
+-- Monthly Visits: 2128798
+-- Latest Review:
+---- Author: Rach
+---- Text: True to size swimming costumes & a really nice fit. 
+---- Rating: 5 / 5
+---- Date: 2024-02-26 23:01:16
+
+6. therealreal.com
+-- Latest Review Count: 2
+-- Total Review Count: 84105
+-- Monthly Visits: 13156857
+-- Latest Review:
+---- Author: Maria
+---- Text: I couldn’t wait to receive my ring. When I did a few days later, I was surprised that it was in such great shape. I’ve never bought anything from here before so when I saw the pictures and read the comments saying it had scratches I was fine with it. I opened up my pouch and I was looking for the scratches and never found them. They were really light ones but you can only see it with a magnifying glass. This company is very thorough with inspection. Can’t wait to purchase other items. Oh, I love my ring so much I haven’t taken it off!
+---- Rating: 5 / 5
+---- Date: 2024-02-26 23:02:25
+
+7. www.glassesusa.com
+-- Latest Review Count: 2
+-- Total Review Count: 64413
+-- Monthly Visits: 4112371
+-- Latest Review:
+---- Author: robin coley
+---- Text: “I had a wonderful experience with this – the was skilled and attentive, and the results were exactly what I wanted. The eye glasses was also clean and well-maintained.”
+---- Rating: 5 / 5
+---- Date: 2024-02-26 23:03:19
+
+8. nfm.com
+-- Latest Review Count: 2
+-- Total Review Count: 98952
+-- Monthly Visits: 2556246
+-- Latest Review:
+---- Author: Jacqueline Turner
+---- Text: I found what I have been looking for and it was not hard to purchase, thankyou
+---- Rating: 5 / 5
+---- Date: 2024-02-26 22:55:28
+
+9. myka.com
+-- Latest Review Count: 2
+-- Total Review Count: 63609
+-- Monthly Visits: 1959368
+-- Latest Review:
+---- Author: Lynn
+---- Text: This is the second item I've ordered from MYKA. Jewelry is beautifully made and customer service is excellent. 
+---- Rating: 5 / 5
+---- Date: 2024-02-26 22:51:40
+
+10. www.jomashop.com
+-- Latest Review Count: 1
+-- Total Review Count: 24666
+-- Monthly Visits: 9912109
+-- Latest Review:
+---- Author: kavya vintha
+---- Text: Great price and collection 
+---- Rating: 5 / 5
+---- Date: 2024-02-26 22:40:41
+
