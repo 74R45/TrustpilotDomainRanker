@@ -86,7 +86,9 @@ object DomainRankerApp extends App {
       .runWith(dashboardSink)
       .onComplete {
         case Success(_) => logger.info("Dashboard updated!")
-        case Failure(ex) => logger.error("Error while updating dashboard: {}", ex.getMessage)
+        case Failure(ex) =>
+          logger.error("Error while updating the dashboard file, writing it to console instead. ({})\n", ex.getMessage)
+          dashboardSource.runForeach(print)
       }
   }
 
