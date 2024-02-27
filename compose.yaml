@@ -5,4 +5,4 @@ services:
       context: ./target/docker/stage
       dockerfile: Dockerfile
     volumes:
-      - ./out:/out
+      - ./out:/out:rw
